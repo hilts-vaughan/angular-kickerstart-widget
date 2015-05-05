@@ -1,0 +1,101 @@
+.bg-white {
+	background-color: white;
+}
+
+.bg-off {
+	background-color: #666;
+}
+
+#main-menu .brand {
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 40px;
+  color: #00A8E6;
+}
+
+.constrain {
+  max-width: 1024px;
+  margin: 0px auto;
+  margin-top: 15px;
+  padding: 0px 25px;
+}
+
+.banner-block  {
+	margin-top: 15px;
+}
+
+.banner-number {
+	text-align: center;
+}
+
+#index-panel {
+  min-height: 300px;
+}
+
+#index-panel .large-text {
+  font-size: 40px;
+  text-align: center;  
+  display: inline-block;
+  padding: 14px 14px 14px 14px;
+  float: right;
+  padding-top: 126px; 
+  cursor: pointer;
+}
+
+
+
+
+
+#content-block {
+	margin-top: 20px;
+}
+
+#results-container {
+	margin-top: 15px;
+}
+
+#results-container .uk-panel-title {
+	text-align: center;
+	padding-bottom: 5px;
+}
+
+#results-container .uk-panel-teaser {
+  overflow: hidden;
+  max-height: 200px; 
+}
+
+#results-container .uk-panel-box:hover {
+  background-color: rgb(250, 235, 255);
+}
+
+.numberCircle {
+    border-radius: 50%;
+
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+
+    border: 2px solid black;
+    color: #666;
+    text-align: center;
+
+    font: 32px Arial, sans-serif;
+}
+
+#search-container {
+
+}
+
+.instruction-panel {
+  background-color: #e6fafd;
+  font-weight: bold;
+}
+
+.instruction-panel .header {
+
+}
+
+.instruction-panel .details {
+  margin-top: 30px;
+  font-size: 22px;
+}

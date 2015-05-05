@@ -1,0 +1,27 @@
+{
+   name: "Clannad Kickstarter"
+   "tiers": [
+	{
+		name: "XXXX",
+		cost: 50,
+		description: "Something about Clannad XXXX"
+	},
+	{
+		name: "CCSDSD",
+		cost: 100,
+		description: "something about more clannad"
+	}
+   ],
+
+   "addons": [
+	{
+		name: "Pillow",
+		cost: 150,
+		description: "New pillow"
+	}	
+
+   ]
+
+
+
+}

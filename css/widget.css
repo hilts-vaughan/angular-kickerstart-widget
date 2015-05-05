@@ -1,0 +1,178 @@
+
+.kickstarter-widget-container {
+        font-family: Lato, sans-serif;
+}
+
+.kickstarter-widget-container button {
+  display: inline;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  cursor: pointer;
+  padding: 5px 20px;
+  width: 89
+  %;
+  text-align: center;  
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  color: rgba(0,0,0,0.9);
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: white;
+  -webkit-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+  -moz-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+  -o-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+  transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+
+.kickstarter-widget-container h1 {
+    font-size: 14px;
+    color: black;    
+}
+
+
+.kickstarter-widget-container .reward-row {
+    font-size: 12px;
+    padding: 5px 5px 5px 5px;
+    background-color: #FAF2FC;
+}
+
+.kickstarter-widget-container .reward-row:nth-child(odd) {
+    background-color: #EAFFFD;
+}
+
+
+.kickstarter-widget-container .reward-row .reward-dollar-holder {
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.kickstarter-widget-container .reward-row .reward-description {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+.kickstarter-widget-container .select-container {
+      padding: 0;
+      margin: 0;
+      border: 1px solid #ccc;
+      width: 50%;
+      border-radius: 3px;
+      overflow: hidden;
+      background-color: #fff;
+
+      background: #fff url("http://www.scottgood.com/jsg/blog.nsf/images/arrowdown.gif") no-repeat 100% 50%;
+  }
+
+.kickstarter-widget-container select {
+    padding: 5px 8px;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+}
+
+.kickstarter-widget-container select:focus {
+    outline: none;
+}
+
+
+
+.kickstarter-widget-container .accordion {
+    width: 400px;
+    margin: 10px auto;
+    box-shadow:
+        0px 0px 0px 1px rgba(155,155,155,0.3),
+        0px 2px 2px rgba(0,0,0,0.1);
+}
+
+.kickstarter-widget-container .accordion label {
+    padding: 10px 10px;
+    position: relative;
+    display: block;
+    height: 30px;
+    cursor: pointer;
+    color: #0B7A75;
+    line-height: 33px;
+    font-size: 19px;
+    background: #FDECEF;
+    border: 1px solid #CCC;
+    font-weight: bold;
+}
+
+.kickstarter-widget-container .accordion label:hover {
+    background: #001f3f;
+}
+
+.kickstarter-widget-container .accordion input + label {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.kickstarter-widget-container .accordion input:checked + label,
+.kickstarter-widget-container .accordion input:checked + label:hover {
+    background: #FDECEF;
+    color: #0B7A75;
+    box-shadow:
+        0px 0px 0px 1px rgba(155,155,155,0.3),
+        0px 2px 2px rgba(0,0,0,0.1);
+}
+
+.kickstarter-widget-container .accordion input {
+    display: none;
+}
+
+.kickstarter-widget-container .accordion .reward-row input {
+    display: inline;
+}
+
+
+
+.kickstarter-widget-container .accordion .article {
+    background: rgb(255, 255, 255);
+    overflow: hidden;
+    height: 0px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.kickstarter-widget-container .accordion .article p {
+    font-style: italic;
+    color: #777;
+    line-height: 23px;
+    font-size: 14px;
+    padding: 20px;
+}
+
+.kickstarter-widget-container .accordion input:checked ~ .article {
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.kickstarter-widget-container .accordion input:checked ~ .article.ac-small {
+    height: 60px;
+}
+
+.kickstarter-widget-container .accordion input:checked ~ .article.ac-medium {
+    height: 195px;
+}
+
+.kickstarter-widget-container .accordion input:checked ~ .article.ac-large {
+    height: 245px;
+}
