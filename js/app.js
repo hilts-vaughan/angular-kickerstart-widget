@@ -1,6 +1,6 @@
-angular.module('kickwidget', ['ngRoute'])
+var app = angular.module('kickwidget', ['ngRoute']);
  
-.value('widget-version', '0.0.1')
+app.value('widget-version', '0.0.1')
 
 .config(function($routeProvider) {
   $routeProvider
