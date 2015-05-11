@@ -52,6 +52,8 @@
 
 #results-container {
 	margin-top: 15px;
+  height: 600px;
+  overflow: hidden;
 }
 
 #results-container .uk-panel-title {

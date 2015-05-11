@@ -22,37 +22,43 @@
 
             <form class="uk-form">
                 <fieldset data-uk-margin>
-                    <input type="text" class="uk-width-1-1" placeholder="">
+                    <input type="text" class="uk-width-1-1" ng-model-options='{ debounce: 500 }' ng-model="searchQuery" ng-change="search()" placeholder="">
                 </fieldset>
             </form>
+        </div>
+    </div>
+</div>
 
 
-            <div id="results-container">
+<div class="uk-grid uk-grid-match" data-uk-grid-match>
 
-                <!-- The results from a search would be shown here -->
-                <div class="uk-panel uk-panel-box">
 
-                    <h3 class="uk-panel-title">~Exogenesis~</h3>
-                    <div class="uk-panel-teaser">
-                        <img src="img/photo.jpg" alt="">
+    <div class="uk-width-medium-1-2 uk-grid-match" ng-repeat="result in results.projects" class="ng-scope" ng-click="select(result)">
+
+
+    <div id="results-container" >
+
+                    <!-- The results from a search would be shown here -->
+                    <div class="uk-panel uk-panel-box">                    
+                        <h3 class="uk-panel-title ng-binding">{{result.name}}</h3>
+                        <div class="uk-panel-teaser">
+                            <img src="{{result.photo}}" alt="">
+                        </div>
+                        <b class="ng-binding">{{result.description}}</b>
+
+                        <dl ng-repeat="reward in result.rewards | limitTo: 2" class="uk-description-list-line">
+                            <dt >{{reward.amount}}</dt>
+                            <dd>
+                                {{reward.description}}
+                            </dd>                
+                        </dl>
+
                     </div>
-                    <b> A post-apocalyptic adventure/visual novel hybrid inspired by Ace Attorney and Zero Escape games set in Japan. </b>
-
-                    <dl class="uk-description-list-line">
-
-                        <dt>$1 reward</dt>
-                        <dd>You're here, and that matters a lot. Thank you for helping us out!</dd>
-
-                        <dt>$5 reward</dt>
-                        <dd>Show your support and express your desire to make Exogenesis a reality. Receive an invitation to our exclusive forums, be listed in the credits as a Backer and receive three HD desktop wallpapers with our heartfelt gratitude!</dd>
-
-                    </dl>
 
                 </div>
 
-            </div>
-
-
-        </div>
     </div>
+
+
+
 </div>

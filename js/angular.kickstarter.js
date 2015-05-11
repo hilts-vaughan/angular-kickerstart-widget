@@ -7,7 +7,7 @@
 
 var module = angular.module('angular.kickstarter', []);
 
-module.service('kickstarter-api', function($http){
+module.service('$kickapi', function($http){
     
       var KICKSTARTER_URL = "https://www.kickstarter.com/projects/";
 
@@ -17,16 +17,22 @@ module.service('kickstarter-api', function($http){
        */
       this.searchForProject = function(query, callback) {
 
-          // Execute the query
-          $http.get('https://www.kickstarter.com/projects/search.json?search=&term=' + query).
+          // Execute the query  
+          that = this;
+          $http.get(this._getProxyUrl('https://www.kickstarter.com/projects/search.json?search=&term=' + query)).
           success(function(data, status, headers, config) {              
-              var result = this._parseSearchResponse(data);
+              var result = that._parseSearchResponse(data);
               callback({projects: result});
           }).
           error(function(data, status, headers, config) {
             callback({err: status})
           });
       };
+
+      this._getProxyUrl = function(url) {
+        ret = "http://localhost:4445/"+ url;
+        return ret;
+      }
 
       this._parseSearchResponse = function(response) {
 
@@ -65,9 +71,10 @@ module.service('kickstarter-api', function($http){
        */
       this.getRewardsForId = function(id, slug, callback) {
 
-        $http.get(KICKSTARTER_URL + id + '/' + slug + '/rewards').
+        that = this;
+        $http.get(this._getProxyUrl(KICKSTARTER_URL + id + '/' + slug + '/rewards')).
           success(function(data, status, headers, config) {
-              var rewards = this._parseRewardResponse(data);
+              var rewards = that._parseRewardResponse(data);
               callback({'rewards': rewards})
           }).
           error(function(data, status) {
@@ -82,14 +89,14 @@ module.service('kickstarter-api', function($http){
        * @param  {string} response The HTML return type of the string
        * @return {Array}          A collection of rewards
        */
-      this._parseRewardResponse = function(response) {
+      this._parseRewardResponse = function(html) {
 
-        var rewardSelectors = $(html).find('NS_backer_rewards__reward');
+        var rewardSelectors = $(html).find('.NS_backer_rewards__reward');
         var rewards = [];
 
-        rewardSelectors.each(function(rewardElement) {
+        rewardSelectors.each(function(index, rewardElement) {
           var reward = {};
-          reward.amount =  $(rewardElement).find(".mb1").text();
+          reward.amount =  $(rewardElement).find(".mb1").text().replace(/^\s+|\s+$/g,'');
           reward.description = $(rewardElement).find(".desc").text();
   
           rewards.push(reward);

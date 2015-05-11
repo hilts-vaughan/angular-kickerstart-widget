@@ -1,0 +1,64 @@
+<div class="uk-grid uk-grid-match" data-uk-grid-match >
+   
+
+
+    <div class="uk-width-medium-1-2">
+        <div class="uk-panel uk-panel-box uk-grid-match instruction-panel">
+            <h1 class="header">Step 1</h1>
+
+            <p class="details"> Just search for the project that belongs to
+                you right from Kickstarter. We'll populate
+                your rewards, get some information, and 
+                make sure the experience is just for you.
+            </p>
+        </div>
+    </div>
+
+
+
+    <div class="uk-width-medium-1-2">
+        <div class="uk-panel uk-panel-box uk-grid-match">
+            <h3 class="uk-panel-title">Step 1: What is your Kickstarter?</h3> Just search for your project below and we'll get the rest of the details.
+
+            <form class="uk-form">
+                <fieldset data-uk-margin>
+                    <input type="text" class="uk-width-1-1" ng-model-options='{ debounce: 500 }' ng-model="searchQuery" ng-change="search()" placeholder="">
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="uk-grid uk-grid-match" data-uk-grid-match>
+
+
+    <div class="uk-width-medium-1-2" ng-repeat="result in results.projects" class="ng-scope" ng-click="select(result)">
+
+
+    <div id="results-container" >
+
+                    <!-- The results from a search would be shown here -->
+                    <div class="uk-panel uk-panel-box">                    
+                        <h3 class="uk-panel-title ng-binding">{{result.name}}</h3>
+                        <div class="uk-panel-teaser">
+                            <img src="{{result.photo}}" alt="">
+                        </div>
+                        <b class="ng-binding">{{result.description}}</b>
+
+                        <dl ng-repeat="reward in result.rewards" class="uk-description-list-line">
+                            <dt >{{reward.amount}}</dt>
+                            <dd>
+                                {{reward.description}}
+                            </dd>                
+                        </dl>
+
+                    </div>
+
+                </div>
+
+    </div>
+
+
+
+</div>

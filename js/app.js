@@ -1,7 +1,6 @@
-var app = angular.module('kickwidget', ['ngRoute']);
+var app = angular.module('kickwidget', ['ngRoute', 'angular.kickstarter']);
  
 app.value('widget-version', '0.0.1')
-
 .config(function($routeProvider) {
   $routeProvider
     .when('/', {
@@ -14,7 +13,13 @@ app.value('widget-version', '0.0.1')
       templateUrl: 'templates/search.html'
     })
 
+    .when('/rewards', {
+      controller: 'RewardsController',
+      templateUrl: 'templates/rewards.html'
+    })    
+
     .otherwise({
       redirectTo:'/'
     });
 });
+
