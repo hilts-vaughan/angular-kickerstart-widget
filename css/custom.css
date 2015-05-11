@@ -91,6 +91,7 @@
 .instruction-panel {
   background-color: #e6fafd;
   font-weight: bold;
+  line-height: 25px;
 }
 
 .instruction-panel .header {
