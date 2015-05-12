@@ -25,7 +25,7 @@
     <script src="js/angular.kickstarter.js"></script>    
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
-    <script src="js/controllers.js"></script>
+    <script src="js/kickwidget.js"></script>
 
 
 
@@ -62,102 +62,12 @@
         </nav>
 
 
-        <div class="banner-block uk-block uk-block-primary uk-contrast">
-
-            <div class="uk-container">
-
-                <h3>Do you want to create great widgets for your Kickstarter project?</h3>
-
-                <div class="uk-grid uk-grid-match" data-uk-grid-margin="">
-                    <div class="uk-width-medium-1-3">
-                        <div class="uk-panel">
-                            <h1 class="banner-number numberCircle">1</h1>
-                            <b>Tell us the name of your Kickstarter project; we'll gather the details</b>
-                        </div>
-                    </div>
-                    <div class="uk-width-medium-1-3">
-                        <div class="uk-panel">
-                            <h1 class="banner-number numberCircle">2</h1>
-                            <b>Give us any extra information like shipping prices, add-on's and other special reward rules</b>
-                        </div>
-                    </div>
-                    <div class="uk-width-medium-1-3">
-                        <div class="uk-panel">
-                            <h1 class="banner-number numberCircle">3</h1>
-                            <b>Customize, theme and then export. Then, share and spread your campaign</b>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
 
         <!--Content block starts here -->
 
         <div id="content-block" class="uk-container" ng-view>
         
-            <div class="uk-grid">
-
-
-                <div class="uk-width-medium-1-2">
-                    <div class="uk-panel uk-panel-box">
-                    <h2 class="uk-panel-title">Step 2: Give us a bit more information</h2>
-                        
-                        <form class="uk-form">
-
-                            <fieldset data-uk-marign>
-                            
-                            <div class="uk-form-row">
-
-                                <label>Where is this project based?</label>
-                                <select class="select uk-align-right">                                
-                                    <option value="AU">Australia</option>
-                                    <option value="CA">Canada</option>
-                                    <option value="DK">Denmark</option>
-                                    <option value="DE">Germany</option>
-                                    <option value="IE">Ireland</option>
-                                    <option value="NL">Netherlands</option>
-                                    <option value="NZ">New Zealand</option>
-                                    <option value="NO">Norway</option>
-                                    <option value="SE">Sweden</option>
-                                    <option value="GB">United Kingdom</option>
-                                    <option selected="selected" value="US">United States</option>
-                                </select>
-                            </div>
-
-                            <div class="uk-form-row">
-                                <label>Will you ship outside this area?</label>
-                                <input type="checkbox" class="uk-align-right"></input>                                
-                            </div>
-
-                            </fieldset>
-
-
-                        </form>
-
-                        <h3>Add-On's</h3>
-                        <p>Note: Costs will be based on your country picked above</p>
-
-                        <form class="uk-form">
-                            <!-- <button class="uk-button uk-icon-plus"></button> -->
-                            <fieldset data-uk-margin>                            
-                                <input type="text" class="uk-width-1-3" placeholder="Reward Name" placeholder="">
-                                <input type="number" placeholder="Cost" class="uk-width-1-5"> </input>
-                                <input type="number" placeholder="Shipping" class="uk-width-1-5"> </input>
-                                <button class="uk-button uk-icon-minus uk-width-1-10"></button>
-                            </fieldset>               
-                        </form>
-
-                        <p><a href="something.html">When you're ready to move on, just click to do something about it.</a></p>
-
-                    </div>
-                </div>
-
-
-
-            </div>
-
+     
         </div>
         <!--Content block ends here-->
 

@@ -18,6 +18,11 @@ app.value('widget-version', '0.0.1')
       templateUrl: 'templates/rewards.html'
     })    
 
+    .when('/export', {
+        controller: 'ExportController',
+        templateUrl: 'templates/export.html'
+    })
+
     .otherwise({
       redirectTo:'/'
     });

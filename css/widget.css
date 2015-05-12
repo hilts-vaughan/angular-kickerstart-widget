@@ -166,11 +166,12 @@
 }
 
 .kickstarter-widget-container .accordion input:checked ~ .article.ac-small {
-    height: 60px;
+    padding: 12px;
+    height: 100px;
 }
 
 .kickstarter-widget-container .accordion input:checked ~ .article.ac-medium {
-    height: 195px;
+  height: auto;
 }
 
 .kickstarter-widget-container .accordion input:checked ~ .article.ac-large {

@@ -42,7 +42,18 @@
   cursor: pointer;
 }
 
+.reward-forms {
+  padding: 4px !important;
+}
 
+.action-bar {
+  margin-top: 30px;
+  margin-bottom: 0;
+}
+
+.action-bar button {
+  margin-bottom: 0;
+}
 
 
 

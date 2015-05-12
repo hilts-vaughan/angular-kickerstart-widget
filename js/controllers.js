@@ -8,22 +8,20 @@ app.controller('IndexController', ['$scope', '$http', function($scope, $http){
 
 }]);
 
-app.controller('RewardsController', ['$scope', '$http', function($scope, $http){
-
-	$scope.doSomething = function() {
-		alert("!");
-	};
-
-}]);
-
 
 app.controller('SearchController', ['$scope', '$http', '$kickapi', '$location', function($scope, $http, $kickapi, $location){
 
 	$scope.searchQuery = "";
 
 	$scope.select = function(project) {
-		// They've selected a project, so we can get moving on
-		alert(project.name);
+
+		// We could use a service but it's so simple we'll just access it immediately
+		localStorage["project"] = JSON.stringify({
+			webData: project,
+			kickwidget: {}
+		});
+
+		// They've selected a project, so we can get moving on		
 		$location.path('/rewards');
 	};
 
@@ -63,6 +61,67 @@ app.controller('SearchController', ['$scope', '$http', '$kickapi', '$location', 
 
 }]);
 
-app.controller('RewardController', ['$scope', '$http', function($scope, $http){
+app.controller('ExportController', ['$scope', function($scope) {
+
+	$scope.project = JSON.parse(localStorage["project"]);
+
+	// We just simply back out if a project has not yet been loaded as of yet
+	if(!$scope.project.webData)
+		$location.path('/');
+
+	$scope.loaded = function() {
+	
+		// Create a new Kickwidget and get going
+		widget = new KickWidget('kickwidget-container', $scope.project);
+		widget.init();
+
+
+	};
+
+}]);
+
+app.controller('RewardsController', ['$scope', '$location', function($scope, $location){
+
+	project = JSON.parse(localStorage["project"])
+	$scope.project = project.kickwidget;
+	$scope.ksdata = project.webData;
+
+	if(!project.webData) {
+		$location.path("/search");
+	}
+
+	if(!$scope.project.rewards)
+		$scope.project.rewards = [];
+
+
+	$scope.remove = function(index) {
+		$scope.project.rewards.splice(index, 1);
+	};
+
+	$scope.add = function() {					
+		// Push the reward
+		$scope.project.rewards.push({
+			name: "",
+			cost: "",
+			shippingCost: ""
+		});
+	};
+
+	$scope.done = function() {
+
+		// Save the project to the disk
+		attached = JSON.parse(localStorage["project"]);
+		attached.kickwidget = $scope.project;
+
+		localStorage["project"] = JSON.stringify(attached);
+
+		// Move to the next step
+		$location.path('/export');
+
+	};
+
+	$scope.change = function() {
+		$location.path('/search');
+	}
 
 }]);
