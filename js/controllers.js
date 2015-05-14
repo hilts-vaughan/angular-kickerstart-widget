@@ -1,9 +1,31 @@
 var app = angular.module('kickwidget');
 
-app.controller('IndexController', ['$scope', '$http', function($scope, $http){
+app.controller('IndexController', ['$scope', '$http', '$location', function($scope, $http, $location){
 
-	$scope.doSomething = function() {
-		alert("!");
+	$scope.import = function() {
+		
+		var fileSelector = document.createElement('input');
+		fileSelector.setAttribute('type', 'file');
+		var file = fileSelector.click();
+
+		fileSelector.addEventListener('change', function(event) {
+			var file = event.path[0].files[0];
+
+		    var r = new FileReader();
+		    r.onload = function(e) { 
+			      var contents = e.target.result;
+			      localStorage["project"] = contents;
+			      debugger;
+			      parent.location.hash = "rewards";
+
+		        };		      
+
+		    debugger;
+      		r.readAsText(file);
+
+		});
+		
+
 	};
 
 }]);
@@ -61,7 +83,7 @@ app.controller('SearchController', ['$scope', '$http', '$kickapi', '$location', 
 
 }]);
 
-app.controller('ExportController', ['$scope', function($scope) {
+app.controller('ExportController', ['$scope', '$location', function($scope, $location) {
 
 	$scope.project = JSON.parse(localStorage["project"]);
 
@@ -74,9 +96,17 @@ app.controller('ExportController', ['$scope', function($scope) {
 		// Create a new Kickwidget and get going
 		widget = new KickWidget('kickwidget-container', $scope.project);
 		widget.init();
-
-
 	};
+
+	/**
+	 * Starts an export operation on the users browser given the information	 
+	 */
+	$scope.export = function() {		
+		var blob = new Blob([JSON.stringify($scope.project)],
+		 {type: "application/json"});
+		saveAs(blob, "project.json");
+		$location.path('/');
+	}
 
 }]);
 

@@ -23,6 +23,11 @@ app.value('widget-version', '0.0.1')
         templateUrl: 'templates/export.html'
     })
 
+    .when('/about', {
+      controller: null,
+      templateUrl: 'templates/about.html'
+    })
+
     .otherwise({
       redirectTo:'/'
     });

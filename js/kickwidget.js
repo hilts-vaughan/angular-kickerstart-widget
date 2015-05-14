@@ -26,6 +26,8 @@ KickWidget.prototype.init = function() {
 	this._setupPersonal();
 	this._setupAddOns();	
 	this._setupTiers();
+	this._refreshDetails();
+
 
 	// Grab the Kickstarter logo and change the URL to point to the project page
 	var logo = document.getElementById('kickstarter-logo');
@@ -38,6 +40,7 @@ KickWidget.prototype.init = function() {
 	yes.addEventListener('click', function() {
 		that.located = true;
 		that._refreshDetails();
+		that.selectTab('ac-2');
 	})
 
 	// Setup event handlers
@@ -45,6 +48,7 @@ KickWidget.prototype.init = function() {
 	no.addEventListener('click', function() {
 		this.located = false;
 		that._refreshDetails();		
+		that.selectTab('ac-2');		
 	})
 
 };
@@ -53,12 +57,47 @@ KickWidget.prototype._refreshDetails = function() {
 	var container = document.getElementById('detail-text');
 
 	if(this.located && this.selectedTier) {
-		container.innerHTML = "Perfect!";
+		
+		var tierCost = parseInt(this.selectedTier.amount.replace(/\D/g,''));
+		var addonCosts = 0;
+
+
+		var inputs = document.getElementsByTagName('input');
+
+
+		for (var i = inputs.length - 1; i >= 0; i--) {
+		
+			var input = inputs[i];
+			if(input.type === "number" &&  this._hasClass(input, 'input-quantity')) {
+				var count = parseInt(input.value);
+				if(!isNaN(count)) {
+					addonCosts += input.cost * count;							
+					if(!this.located) {
+						addonCosts += input.shippingCost * count;	
+					}
+				}
+			} // find all numeric inputs on the page part of the app
+		}
+		container.innerHTML = "Given your choices, this would require a pledge of $" + (addonCosts + tierCost);
 	}
+
 	else {
 		container.innerHTML = "Please select a pledge and indicate your country first.";
 	}
 
+};
+
+KickWidget.prototype.selectTab = function(tabName) {
+
+	var tabs = ["ac-1", "ac-2", "ac-3", "ac-4"];
+	tabs.forEach(function(tab) {
+		var element = document.getElementById(tab);
+		element.checked = false;
+	});
+
+	
+	var target = document.getElementById(tabName);	
+	target.checked = true;
 };
 
 KickWidget.prototype._setupPersonal = function() {
@@ -94,11 +133,11 @@ KickWidget.prototype._setupAddOns = function() {
 
 			// We'll setup hooks for the numeric input boxes and attempt to detect changes
 			// so that we can force reload the page
-			var inputs = that._findClass(container, 'input-quantity');
-			inputs.forEach(function(input) {						
-				input.addEventListener('change', function() {
+			var input = that._findClass(container, 'input-quantity');
+			input.cost = addon.cost;
+			input.shippingCost = addon.shippingCost;
+			input.addEventListener('change', function() {
 					that._refreshDetails();
-				});				
 			});
 
 		});
@@ -135,7 +174,8 @@ KickWidget.prototype._setupTiers = function() {
 			pledgeButton.tag = reward;
 			pledgeButton.addEventListener('click', function() {
 				that.selectedTier = this.tag;
-				that._refreshDetails();				
+				that._refreshDetails();			
+				that.selectTab('ac-4');					
 			});
 
 		});
@@ -166,6 +206,12 @@ KickWidget.prototype._findClass = function(element, className) {
 	recurse(element, className, false);
 	return foundElement;
 	
+};
+
+
+KickWidget.prototype._hasClass = function(element, cls) {
+	// Does a parse of the element class name's to check for the proper class
+	return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
 };
 
 KickWidget.prototype._loadFile = function(fileName, callback) {
