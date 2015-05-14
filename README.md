@@ -10,7 +10,7 @@ If you have a feature request or bug report, please create an issue for me on Gi
 
 # Using
 
-[Check out the demo page here](hilts-vaughan.github.io/angular-kickstarter-widget) to generate a project file and then follow the following steps:
+[Check out the demo page here](http://hilts-vaughan.github.io/angular-kickstarter-widget) to generate a project file and then follow the following steps:
 
 1. Include the `widget.html` markup where you want the widget to go.
 2. Include the `widget.css` in your page, also make sure you have the `add_on.html` and `reward_row.html` in the active directory of where the JavaScript will be loading form.
