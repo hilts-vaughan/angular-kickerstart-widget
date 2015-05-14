@@ -30,7 +30,7 @@ module.service('$kickapi', function($http){
       };
 
       this._getProxyUrl = function(url) {
-        ret = "http://localhost:4445/"+ url;
+        ret = "http://kickstarter-proxy.herokuapp.com:4455/"+ url;
         return ret;
       }
 
